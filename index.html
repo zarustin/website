@@ -11,41 +11,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<!-- MailerLite Universal -->
-		<script>
-			document.getElementById('customMailerLiteForm').addEventListener('submit', function(event) {
-				event.preventDefault();
-
-				var formData = new FormData(this);
-
-				// Ensure your API endpoint URL is correct; this is just an example
-				var apiUrl = 'https://api.mailerlite.com/api/v2/subscribers';
-
-				fetch(apiUrl, {
-					method: 'POST',
-					body: JSON.stringify({
-						email: formData.get('email'),
-						fields: {
-							optin: formData.get('optin') === 'on' ? true : false
-						}
-					}),
-					headers: {
-						'Content-Type': 'application/json',
-						'Authorization': 'Bearer YOUR_API_KEY' // Not safe to expose your API key like this!
-					}
-				})
-				.then(response => response.json())
-				.then(data => {
-					console.log('Success:', data);
-					alert('Thank you for subscribing!');
-				})
-				.catch((error) => {
-					console.error('Error:', error);
-					alert('Error subscribing. Please try again later.');
-				});
-			});
-		</script>
-		<!-- End MailerLite Universal -->
 	</head>
 	<body class="is-preload">
 
@@ -189,6 +154,40 @@
 					</ul>
 				</div>
 			</footer>
+
+		<!-- Integration MailerLite  -->
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				document.getElementById('customMailerLiteForm').addEventListener('submit', function(event) {
+					event.preventDefault();
+
+					var formData = new FormData(this);
+					var apiUrl = 'https://api.mailerlite.com/api/v2/subscribers';
+					fetch(apiUrl, {
+						method: 'POST',
+						body: JSON.stringify({
+							email: formData.get('email'),
+							fields: {
+								optin: formData.get('optin') === 'on' ? true : false
+							}
+						}),
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': 'Bearer YOUR_API_KEY' // Remember, don't expose your API Key in production!
+						}
+					})
+					.then(response => response.json())
+					.then(data => {
+						console.log('Success:', data);
+						alert('Thank you for subscribing!');
+					})
+					.catch((error) => {
+						console.error('Error:', error);
+						alert('Error subscribing. Please try again later.');
+					});
+				});
+			});
+		</script>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
