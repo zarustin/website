@@ -11,6 +11,35 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<!-- MailerLite Universal -->
+		<script>
+			document.getElementById('customMailerLiteForm').addEventListener('submit', function(event) {
+				event.preventDefault();
+
+				var formData = new FormData(this);
+
+				fetch('/.netlify/functions/subscribe', {
+					method: 'POST',
+					body: JSON.stringify({
+						email: formData.get('email'),
+						optin: formData.get('optin') === 'on' ? true : false
+					}),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					console.log('Success:', data);
+					alert('Thank you for subscribing!');
+				})
+				.catch((error) => {
+					console.error('Error:', error);
+					alert('Error subscribing. Please try again later.');
+				});
+			});
+		</script>
+		<!-- End MailerLite Universal -->
 	</head>
 	<body class="is-preload">
 
@@ -63,7 +92,7 @@
 					<section id="two" class="wrapper style3 fade-up">
 						<div class="inner">
 							<h2>About Sasha Zarustin</h2>
-							<p>As an IT professional, Zarustin hasn't had any particular problems understanding the evolution of AI in recent years. Having lived in various countries and speaking multiple languages, the author has ended up becoming interested in human psychology as a tool to see beyond the filters that a person's culture and education place between their personality and the image they project of themselves. The accounts he has heard over time from friends and colleagues, including people who work for the American government, inspired this story. This has given Zarustin the ability to create characters so believable that bringing them to life and moving them around the Washington DC chessboard was a lot of fun.
+							<p>As an IT professional, Zarustin hasn't had any particular problems understanding the evolution of technology in recent years. Having lived in various countries and speaking multiple languages, the author has ended up becoming interested in human psychology as a tool to see beyond the filters that a person's culture and education place between their personality and the image they project of themselves. The accounts he has heard over time from friends and colleagues, including people who work for the American government, inspired this story. This has given Zarustin the ability to create characters so believable that bringing them to life and moving them around the Washington DC chessboard was a lot of fun.
 							</p>
 							<!-- <div class="features">
 								<section>
@@ -87,27 +116,28 @@
 					<section id="three" class="wrapper style1 fade-up">
 						<div class="inner">
 							<h2>Get in touch</h2>
-							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
+							<!-- p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p -->
 							<div class="split style1">
 								<section>
-									<form method="post" action="#">
+									<form method="post" id="customMailerLiteForm" action="#">
 										<div class="fields">
-											<div class="field half">
-												<label for="name">Name</label>
+											<!-- <div class="field half">
+												<label for="name">Name (not required)</label>
 												<input type="text" name="name" id="name" />
-											</div>
-											<div class="field half">
-												<label for="email">Email</label>
-												<input type="text" name="email" id="email" />
-											</div>
+											</div> -->
 											<div class="field">
+												<label for="email">Email</label>
+												<input type="email" name="email" id="email" placeholder="Your email" required/>
+											</div>
+											<!-- <div class="field">
 												<label for="message">Message</label>
 												<textarea name="message" id="message" rows="5"></textarea>
-											</div>
+											</div> -->
 										</div>
-										<ul class="actions">
+										<button type="submit">Subscribe</button>
+										<!-- <ul class="actions">
 											<li><a href="" class="button submit">Send Message</a></li>
-										</ul>
+										</ul> -->
 									</form>
 								</section>
 								<section>
