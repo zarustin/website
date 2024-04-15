@@ -162,6 +162,35 @@
 					event.preventDefault();
 
 					var formData = new FormData(this);
+					fetch('/.netlify/functions/subscribe', {  // This is the URL for your Netlify function
+						method: 'POST',
+						body: JSON.stringify({
+							email: formData.get('email'),
+							optin: formData.get('optin') === 'on' ? true : false  // Assuming you have an 'optin' checkbox in your form
+						}),
+						headers: {
+							'Content-Type': 'application/json'
+						}
+					})
+					.then(response => response.json())
+					.then(data => {
+						console.log('Success:', data);
+						alert('Thank you for subscribing!');
+					})
+					.catch((error) => {
+						console.error('Error:', error);
+						alert('Error subscribing. Please try again later.');
+					});
+				});
+			});
+		</script>
+
+		<!-- <script>
+			document.addEventListener('DOMContentLoaded', function () {
+				document.getElementById('customMailerLiteForm').addEventListener('submit', function(event) {
+					event.preventDefault();
+
+					var formData = new FormData(this);
 					var apiUrl = 'https://api.mailerlite.com/api/v2/subscribers';
 					fetch(apiUrl, {
 						method: 'POST',
@@ -187,7 +216,7 @@
 					});
 				});
 			});
-		</script>
+		</script> -->
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
