@@ -14,7 +14,7 @@ export async function handler(event) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_KEY}`
+                'X-MailerLite-ApiKey': API_KEY
             },
             body: JSON.stringify({
                 email: email,
