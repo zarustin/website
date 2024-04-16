@@ -8,7 +8,7 @@ export async function handler(event) {
 
     const { email, optin } = JSON.parse(event.body);
     const API_KEY = process.env.MAILERLITE_API_KEY;
-    console.log('API Key:', process.env.MAILERLITE_API_KEY); // Only for debugging; remove or obfuscate before going live.
+    // console.log('API Key:', process.env.MAILERLITE_API_KEY); // Only for debugging; remove or obfuscate before going live.
 
     try {
         const response = await fetch('https://api.mailerlite.com/api/v2/subscribers', {
