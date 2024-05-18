@@ -2445,11 +2445,15 @@ body.is-ie .spotlights > section {
   border-radius: 0;
   display: block;
   position: relative;
-  width: 25em;
+  width: 18em;
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 1em; /* Added margin to create space between the image and the sidebar */
 }
 .spotlights > section > .image img {
   border-radius: 0;
   display: block;
+  width: 100%; /* Ensure image width is 100% of the container */
+  height: auto; /* Maintain aspect ratio */
 }
 .spotlights > section > .image:before {
   -moz-transition: opacity 1s ease;
@@ -2480,7 +2484,7 @@ body.is-ie .spotlights > section {
   -webkit-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
-  width: 50em;
+  width: 56em;
   -ms-flex: 1;
 }
 .spotlights > section > .content > .inner {
@@ -3152,11 +3156,11 @@ body.is-preload #sidebar nav ul li {
 
 /* Intro */
 #intro {
-  background-attachment: fixed;
-  background-image: url("images/2024_fb_banner.jpg");
-  background-position: top right;
+  background-attachment: scroll;
+  background-image: url("images/site_hero.jpg");
+  background-position: center center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
 }
 #intro p {
   font-size: 1.25em;
