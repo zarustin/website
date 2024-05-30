@@ -3158,9 +3158,9 @@ body.is-preload #sidebar nav ul li {
 #intro {
   background-attachment: scroll;
   background-image: url("images/site_hero.jpg");
-  background-position: center center;
+  background-position: top center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 #intro p {
   font-size: 1.25em;
