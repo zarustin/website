@@ -6,28 +6,33 @@
 
 /* Intro */
 
-	#intro {
-		background-attachment: scroll;
-		background-image: url('images/site_hero.jpg');
-		background-position: top center;
-		background-repeat: no-repeat;
-		background-size: contain;
+#intro {
+	background-attachment: scroll;
+    background-image: url(images/site_hero.jpg);
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: 100%;
+	// background-attachment: scroll;
+	// background-image: url('images/site_hero.jpg');
+	// background-position: top center;
+	// background-repeat: no-repeat;
+	// background-size: contain;
 
-		p {
-			font-size: 1.25em;
+	p {
+		font-size: 1.25em;
 
-			@include breakpoint('<=medium') {
-				br {
-					display: none;
-				}
-			}
-
-			@include breakpoint('<=small') {
-				font-size: 1em;
+		@include breakpoint('<=medium') {
+			br {
+				display: none;
 			}
 		}
 
-		@include breakpoint('<=large') {
-			background-attachment: scroll;
+		@include breakpoint('<=small') {
+			font-size: 1em;
 		}
 	}
+
+	@include breakpoint('<=large') {
+		background-attachment: scroll;
+	}
+}
