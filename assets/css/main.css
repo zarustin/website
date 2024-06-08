@@ -2660,27 +2660,27 @@ table.alt tfoot {
   -webkit-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
-  min-height: 69vh;
+  min-height: 67vh;
 }
 @media screen and (max-width: 1680px) {
   .wrapper.fullscreen {
-    min-height: calc(62vh - 2.5em);
+    min-height: 67vh;
   }
 }
 @media screen and (max-width: 1280px) {
   .wrapper.fullscreen {
-    min-height: calc(60vh - 2.5em);
+    min-height: 67vh;
   }
 }
 @media screen and (max-width: 980px) {
   .wrapper.fullscreen {
-    min-height: calc(55vh - 2.5em);
+    min-height: 60vh;
   }
 }
 @media screen and (max-width: 736px) {
   .wrapper.fullscreen {
     padding: 2em 0;
-    min-height: 28vh;
+    min-height: 33vh;
   }
 }
 .wrapper.fade-up > .inner {
